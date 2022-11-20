@@ -12,8 +12,7 @@ import Comments from '../../components/Comments'
 import LiketButton from '../../components/LiketButton'
 import useAuthStore from '../../store/authStore'
 import { Video } from '../../types'
-import { BASE_URL } from '../../utils'
-import { createOrGetUser } from '../../utils'
+import { BASE_URL, createOrGetUser } from '../../utils'
 
 
 interface IProps {
@@ -72,7 +71,7 @@ const Detail = ({ postDetails }: IProps) => {
     if (post && videoRef?.current) {
       videoRef.current.muted = isVideoMuted
     }
-  }, [post, isVideoMuted])
+  }, [post, isVideoMuted, videoRef?.current])
 
   return (
     <div className='flex w-full absolute left-0 top-0 bg-white flex-wrap lg:flex-nowrap'>

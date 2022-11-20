@@ -1,13 +1,12 @@
-import React, { useState } from 'react'
-import { useRouter } from 'next/router'
-import { FaCloudUploadAlt } from 'react-icons/fa'
-import { MdDelete } from 'react-icons/md'
-import axios from 'axios'
-import useAuthStore from '../store/authStore'
-import { client } from '../utils/client'
 import { SanityAssetDocument } from '@sanity/client'
-import { topics } from '../utils/constants'
+import axios from 'axios'
+import { useRouter } from 'next/router'
+import React, { useState } from 'react'
+import { FaCloudUploadAlt } from 'react-icons/fa'
+import useAuthStore from '../store/authStore'
 import { BASE_URL } from '../utils'
+import { client } from '../utils/client'
+import { topics } from '../utils/constants'
 
 const upload = () => {
   const router = useRouter()
