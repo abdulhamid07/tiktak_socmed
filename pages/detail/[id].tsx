@@ -7,7 +7,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { BsFillPlayFill } from 'react-icons/bs'
 import { GoVerified } from 'react-icons/go'
 import { HiVolumeOff, HiVolumeUp } from 'react-icons/hi'
-import { MdOutlineCancel } from 'react-icons/md'
+import { MdOutlineClose } from 'react-icons/md'
 import Comments from '../../components/Comments'
 import LiketButton from '../../components/LiketButton'
 import useAuthStore from '../../store/authStore'
@@ -22,7 +22,7 @@ const Detail = ({ postDetails }: IProps) => {
   const router = useRouter()
   const [post, setPost] = useState(postDetails)
   const { addUser }: { addUser: any } = useAuthStore();
-  const [playing, setPlaying] = useState(false)
+  const [playing, setPlaying] = useState(true)
   const [isVideoMuted, setIsVideoMuted] = useState(false)
   const [comment, setComment] = useState('')
   const [isPostingComment, setisPostingComment] = useState(false)
@@ -75,16 +75,17 @@ const Detail = ({ postDetails }: IProps) => {
   return (
     <div className='flex w-full absolute left-0 top-0 bg-white flex-wrap lg:flex-nowrap'>
       <div className='relative flex-2 w-[1000px] lg:w-9/12 flex justify-center items-center bg-blurred-img bg-no-repeat bg-cover bg-center'>
-        <div className='absolute top-6 left-2 lg:left-6 flex gap-6 z-50'>
+        <div className='absolute lg:top-6 top-3 left-3 lg:left-6 flex gap-6 z-50 bg-white/20 rounded-full p-1'>
           <p className='cursor-pointer'>
-            <MdOutlineCancel className='text-white text-[35px]' onClick={() => router.back()} />
+            <MdOutlineClose className='text-white text-2xl' onClick={() => router.back()} />
           </p>
         </div>
         <div className='relative '>
-          <div className='lg:h-[100vh] h-[60vh]'>
+          <div className='lg:h-[100vh] h-[65vh]'>
             <video
               ref={videoRef}
               loop
+              autoPlay
               onClick={onVideoClick}
               src={post.video.asset.url}
               className='h-full cursor-pointer'

@@ -85,7 +85,7 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
             </video>
           </Link>
           {isHover && (
-            <div className='absolute bottom-6 cursor-pointer left-10 md:left-10 lg:left-15 flex gap-10 lg:justify-between w-[120px] lg:w-[520px] p-3'>
+            <div className='absolute bottom-6 cursor-pointer left-8 md:left-15 flex gap-10 justify-between w-[180px] lg:w-[520px] p-3'>
               {playing ? (
                 <button onClick={onVideoPress}>
                   <BsFillPauseFill className='text-black text-2xl lg:text-4xl' />
