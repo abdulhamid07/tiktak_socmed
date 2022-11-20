@@ -44,8 +44,8 @@ const Comments = ({ comment, setComment, comments, addComment, isPostingComment 
                             className='rounded-full'
                           />
                         </div>
-                        <p className='flex gap-1 items-center mt-[-14px] text-md font-bold text-primary capitalize'>
-                          {user.userName}
+                        <p className='flex gap-1 items-center mt-[-14px] text-md font-bold text-primary lowercase'>
+                          {user.userName.replaceAll(' ', '')}{` `}
                           <GoVerified className='text-blue-400' />
                         </p>
                       </div>

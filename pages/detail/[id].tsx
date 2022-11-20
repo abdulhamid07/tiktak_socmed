@@ -132,7 +132,7 @@ const Detail = ({ postDetails }: IProps) => {
             <div>
               <Link href='/'>
                 <div className='flex flex-col gap-2'>
-                  <p className='flex gap-2 items-center md:text-md font-bold text-primary'>
+                  <p className='flex gap-2 items-center md:text-md font-bold text-primary lowercase'>
                     {post.postedBy.userName.replaceAll(' ', '')}{` `}
                     <GoVerified className='text-blue-400 text-md' />
                   </p>
