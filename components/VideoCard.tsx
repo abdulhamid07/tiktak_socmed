@@ -63,11 +63,14 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
                 </p>
               </div>
             </Link>
-            <p className='text-md font-normal'>
+            <p className='md:block hidden text-md font-normal'>
               {post.caption}
             </p>
           </div>
         </div>
+        <p className='md:hidden block text-md font-normal pl-14 mr-2 mt-[-24px] mb-3'>
+          {post.caption}
+        </p>
       </div>
       <div className='lg:ml-20 gap-4 relative'>
         <div
