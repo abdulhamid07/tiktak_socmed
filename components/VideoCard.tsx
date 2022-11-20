@@ -1,12 +1,12 @@
 import { NextPage } from 'next'
-import React, { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { HiVolumeUp, HiVolumeOff } from 'react-icons/hi'
-import { BsPlay, BsFillPlayFill, BsFillPauseFill } from 'react-icons/bs'
+import React, { useEffect, useRef, useState } from 'react'
+import { BsFillPauseFill, BsFillPlayFill } from 'react-icons/bs'
 import { GoVerified } from 'react-icons/go'
-
+import { HiVolumeOff, HiVolumeUp } from 'react-icons/hi'
 import { Video } from '../types'
+
 
 interface IProps {
   post: Video
@@ -54,9 +54,9 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
           <div>
             <Link href={`/profile/${post.postedBy._id}`}>
               <div className='flex items-center gap-2'>
-                <p className='flex gap-2 items-center md:text-md font-bold text-primary lowercase'>
+                <b className='flex gap-2 items-center md:text-md font-bold text-primary lowercase'>
                   {post.postedBy.userName.replaceAll(' ', '')}{` `}
-                </p>{` `}
+                </b>{` `}
                 <GoVerified className='text-blue-400 text-md' />
                 <p className='capitalize font-medium text-xs text-gray-500 hidden md:block'>
                   {post.postedBy.userName}
@@ -68,7 +68,7 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
             </p>
           </div>
         </div>
-        <p className='md:hidden block text-md font-normal pl-14 mr-2 mt-[-24px] mb-3'>
+        <p className='md:hidden block text-md font-normal pl-14 mr-2 mt-[-20px] mb-4'>
           {post.caption}
         </p>
       </div>
@@ -82,29 +82,29 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
               ref={videoRef}
               src={post.video.asset.url}
               loop
-              className='lg:w-[600px] h-[300px] md:h-[400px] lg:h-[530px] w-[250px] rounded-2xl cursor-pointer bg-gray-100 items-center'
+              className='lg:w-[600px] h-[300px] md:h-[400px] lg:h-[530px] w-[95%] rounded-2xl cursor-pointer bg-gray-100 items-center'
             >
 
             </video>
           </Link>
           {isHover && (
-            <div className='absolute bottom-6 cursor-pointer left-8 md:left-15 flex gap-10 justify-between w-[180px] lg:w-[520px] p-3'>
+            <div className='absolute bottom-[43%] cursor-pointer md:left-[38%] xl:left-[35%] lg:left-[27%] sm:left-[39%] left-[32%] flex gap-10'>
               {playing ? (
-                <button onClick={onVideoPress}>
-                  <BsFillPauseFill className='text-black text-2xl lg:text-4xl' />
+                <button onClick={onVideoPress} className="bg-white/20 p-2 rounded-lg">
+                  <BsFillPauseFill className='text-whit text-2xl lg:text-4xl' />
                 </button>
               ) : (
-                <button onClick={onVideoPress}>
-                  <BsFillPlayFill className='text-black text-2xl lg:text-4xl' />
+                <button onClick={onVideoPress} className="bg-white/20 p-2 rounded-lg">
+                  <BsFillPlayFill className='text-white text-2xl lg:text-4xl' />
                 </button>
               )}
               {isVideoMuted ? (
-                <button onClick={() => setIsVideoMuted(false)}>
-                  <HiVolumeOff className='text-black text-2xl lg:text-4xl' />
+                <button onClick={() => setIsVideoMuted(false)} className="bg-white/20 p-2 rounded-lg">
+                  <HiVolumeOff className='text-white text-2xl lg:text-4xl' />
                 </button>
               ) : (
-                <button onClick={() => setIsVideoMuted(true)}>
-                  <HiVolumeUp className='text-black text-2xl lg:text-4xl' />
+                <button onClick={() => setIsVideoMuted(true)} className="bg-white/20 p-2 rounded-lg">
+                  <HiVolumeUp className='text-white text-2xl lg:text-4xl' />
                 </button>
               )}
             </div>

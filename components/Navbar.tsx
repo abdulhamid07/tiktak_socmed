@@ -2,16 +2,20 @@ import { GoogleLogin, googleLogout } from '@react-oauth/google'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import React, { useState } from 'react'
+import React, { Dispatch, SetStateAction, useState } from 'react'
 import { AiOutlineLogout } from 'react-icons/ai'
 import { BiSearch } from 'react-icons/bi'
 import { IoMdAdd } from 'react-icons/io'
 import useAuthStore from '../store/authStore'
 import { createOrGetUser } from '../utils'
 import Logo from '../utils/tiktak-logo.png'
+import { AiOutlineMenu } from 'react-icons/ai'
+import { ImCancelCircle } from 'react-icons/im'
+import { MdKeyboardBackspace } from 'react-icons/md'
 
-const Navbar = () => {
+const Navbar = ({ setShowSidebar, showSidebar }: { setShowSidebar: Dispatch<SetStateAction<boolean>>, showSidebar: boolean }) => {
   const router = useRouter();
+
   const { userProfile, addUser, removeUser }: { userProfile: any, addUser: any, removeUser: any } = useAuthStore();
   const [searchValue, setSearchValue] = useState('')
   const handleSearch = async (e: { preventDefault: () => void }) => {
@@ -23,6 +27,24 @@ const Navbar = () => {
   }
   return (
     <div className='w-full flex justify-between items-center border-b-2 border-gray-200 py-2 px-4'>
+      <div
+        className='block md:hidden text-2xl'
+        onClick={() => router.pathname === "/upload" ? setShowSidebar(false) : setShowSidebar((prev) => !prev)}
+      >
+        {router.pathname === "/upload" ? (
+          <Link href={`/`} >
+            <MdKeyboardBackspace className='cursor-pointer' />
+          </Link>
+        ) : (
+          <>
+            {showSidebar ?
+              <ImCancelCircle />
+              :
+              <AiOutlineMenu />
+            }
+          </>
+        )}
+      </div>
       <Link href={'/'}>
         <div className='w-[100px] md:w-[130px]'>
           <Image
@@ -86,10 +108,23 @@ const Navbar = () => {
             </button>
           </div>
         ) : (
-          <GoogleLogin
-            onSuccess={(response) => createOrGetUser(response, addUser)}
-            onError={() => console.log('Error')}
-          />
+          <>
+            <div className='md:hidden flex flex-row'>
+              <GoogleLogin
+                text='signin'
+                type='icon'
+                onSuccess={(response) => createOrGetUser(response, addUser)}
+                onError={() => console.log('Error')}
+              />
+            </div>
+            <div className='md:block hidden'>
+              <GoogleLogin
+                type='standard'
+                onSuccess={(response) => createOrGetUser(response, addUser)}
+                onError={() => console.log('Error')}
+              />
+            </div>
+          </>
         )}
       </div>
     </div >

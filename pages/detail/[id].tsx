@@ -81,7 +81,7 @@ const Detail = ({ postDetails }: IProps) => {
           </p>
         </div>
         <div className='relative '>
-          <div className='lg:h-[100vh] h-[65vh]'>
+          <div className='lg:h-[100vh] h-[60vh]'>
             <video
               ref={videoRef}
               loop
@@ -92,7 +92,7 @@ const Detail = ({ postDetails }: IProps) => {
             >
             </video>
           </div>
-          <div className='absolute top-[45%] left-[45%]'>
+          <div className='absolute top-[45%] left-[40%]'>
             {!playing && (
               <button onClick={onVideoClick}>
                 <BsFillPlayFill className='text-white text-6xl lg:text-8xl' />

@@ -1,17 +1,11 @@
-import React from 'react'
-import { NextPage } from 'next'
-import { useRouter } from 'next/router'
 import Link from 'next/link'
-import GoogleLogin from 'react-google-login'
-import { AiFillHome, AiOutlineMenu } from 'react-icons/ai'
-import { ImCancelCircle } from 'react-icons/im'
-import { useState } from 'react'
+import React from 'react'
+import { AiFillHome } from 'react-icons/ai'
 import Discover from './Discover'
-import SuggestedAccount from './SuggestedAccount'
 import Footer from './Footer'
+import SuggestedAccount from './SuggestedAccount'
 
-const Sidebar = () => {
-  const [showSidebar, setShowSidebar] = useState(false)
+const Sidebar = ({ showSidebar }: { showSidebar: boolean }) => {
   const normalLink = 'flex items-center justify-center gap-3 hover:bg-primary py-3 xl:justify-start font-semibold text-[#F51997] rounded cursor-pointer'
 
   const MenuComp = () => (
@@ -32,16 +26,6 @@ const Sidebar = () => {
   )
   return (
     <div>
-      <div
-        className='block xl:hidden ml-6 mt-3 text-2xl'
-        onClick={() => setShowSidebar((prev) => !prev)}
-      >
-        {showSidebar ?
-          <ImCancelCircle />
-          :
-          <AiOutlineMenu />
-        }
-      </div>
       <div className='block md:hidden'>
         {showSidebar && (
           <MenuComp />
