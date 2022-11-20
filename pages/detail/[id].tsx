@@ -71,7 +71,7 @@ const Detail = ({ postDetails }: IProps) => {
     if (post && videoRef?.current) {
       videoRef.current.muted = isVideoMuted
     }
-  }, [post, isVideoMuted, videoRef?.current])
+  }, [post, isVideoMuted, videoRef])
 
   return (
     <div className='flex w-full absolute left-0 top-0 bg-white flex-wrap lg:flex-nowrap'>
